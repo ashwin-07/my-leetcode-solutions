@@ -31,6 +31,7 @@ class Solution {
         
         if (trieNode.word != null) {
             result.add(trieNode.word);
+            trieNode.word = null;
         }
         
         board[i][j] = '#'; //marking it as visited
