@@ -10,16 +10,6 @@ class Solution {
             this.processTime = processTime;
             this.index = index;
         }
-        
-                @Override
-        public String toString() {
-            return "Task{" +
-                    "startTime=" + startTime +
-                    ", processTime=" + processTime +
-                    ", index=" + index +
-                    '}';
-        }
-        
     }
     
     public int[] getOrder(int[][] tasks) {
@@ -66,11 +56,9 @@ class Solution {
                 currIdx++;
     
             }
-            // System.out.println(heap);
             Task currentTask = heap.poll();
             
             currentTime+= currentTask.processTime;
-            // System.out.println(currentTime);
             taskCompletionOrder[completedIdx++] = currentTask.index;
         }
 
