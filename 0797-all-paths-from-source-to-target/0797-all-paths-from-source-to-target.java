@@ -10,8 +10,6 @@ class Solution {
         
         findPaths(path, graph, 0);
         
-        
-        
         return paths;
         
     }
