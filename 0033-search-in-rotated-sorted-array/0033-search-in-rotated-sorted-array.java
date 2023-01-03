@@ -1,52 +1,41 @@
 class Solution {
     public int search(int[] nums, int target) {
         
+
         int lo = 0, hi = nums.length-1;
         
-//         if (nums.length == 1 &&) {
-//             return 0;
-//         }
-        
         while (lo < hi) {
-            
-            int mid = (hi + lo) >> 1;
-            
+            int mid = (lo + hi) >> 1;
             if (nums[mid] == target) {
                 return mid;
             }
-            else if (nums[mid] > nums[hi]) {
+            if (nums[mid] > nums[hi]) {
                 lo = mid+1;
             }
             else {
                 hi = mid;
-            }
-            
+            } 
         }
         
-        
-        int rotInd = lo;
-        lo = 0;
-        hi = nums.length-1;
-        
+        int rotIdx = lo;
+        lo = 0; hi = nums.length-1;
         
         while (lo <= hi) {
-            int mid = (hi + lo) >> 1;
-            
-            int indx = (rotInd + mid) % nums.length;
-            
-            if (nums[indx] == target) {
-                return indx;
+            int mid = (lo + hi) >> 1;
+            int rotatedMid = (mid + rotIdx) % nums.length;
+            if (nums[rotatedMid] == target) {
+                return rotatedMid;
             }
-            else if (nums[indx] < target) {
+            else if (nums[rotatedMid] < target) {
                 lo = mid+1;
             }
             else {
                 hi = mid-1;
             }
-            
         }
         
         return -1;
         
     }
 }
+
