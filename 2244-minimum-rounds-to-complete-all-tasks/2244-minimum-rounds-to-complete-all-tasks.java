@@ -9,9 +9,7 @@ class Solution {
 
         int sum = 0;
         
-        for (int diffLevel:difficultyLvlCounts.keySet()) {
-            
-            int count = difficultyLvlCounts.get(diffLevel);
+        for (int count:difficultyLvlCounts.values()) {
             if (count == 1) {
                 return -1;
             }
