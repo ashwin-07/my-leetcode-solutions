@@ -5,22 +5,17 @@ class Solution {
             return true;
         }
         
-        int fuel = nums[0];
+        int maxRange = nums[0];
         int i = 0;
         
-        while (fuel > 0) {
-            fuel--;
+        while (i < nums.length - 1 
+               && maxRange >= i 
+               && maxRange <= nums.length - 1) {
+            maxRange = Math.max(maxRange, nums[i]+i);
             i++;
-            if (i == nums.length - 1)
-            {
-                return true;
-            }
-            fuel = Math.max(fuel, nums[i]);
-        
-                
         }
         
-        return false;
+        return maxRange >= nums.length - 1;
         
     }
 }
