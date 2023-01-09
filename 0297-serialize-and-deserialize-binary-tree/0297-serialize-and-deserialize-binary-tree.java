@@ -8,44 +8,44 @@
  * }
  */
 public class Codec {
-    
-    private static final String NULL_NODE = "X";
-    private static final String NODE_DELIMITER = ",";
 
+    private final String NULL_NODE = "#";
+    private final String DELIMITER = ",";
+    
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        StringBuilder serializedVal = new StringBuilder();
-        preorderBuildString(root, serializedVal);
-        return serializedVal.toString();
+        
+        StringBuilder sb = new StringBuilder();
+        buildSerializedValue(root, sb);
+        System.out.println(sb.toString());
+        return sb.toString();
     }
     
-    public void preorderBuildString(TreeNode root, StringBuilder serializedVal) {
+    public void buildSerializedValue(TreeNode root, StringBuilder sb) {
         
         if (root == null) {
-            serializedVal.append(NULL_NODE).append(NODE_DELIMITER);
-        }
-        else {
-            serializedVal.append(root.val).append(NODE_DELIMITER);
-            preorderBuildString(root.left, serializedVal);
-            preorderBuildString(root.right, serializedVal);
+            sb.append(NULL_NODE).append(DELIMITER);
+            return;
         }
         
-    } 
+        sb.append(root.val).append(DELIMITER);
+        buildSerializedValue(root.left, sb);
+        buildSerializedValue(root.right, sb);
+    }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        TreeNode root = buildTreeFromString(new LinkedList<>(Arrays.asList(data.split(NODE_DELIMITER))));
-        return root;
+        Queue queue = new LinkedList<>(Arrays.asList(data.split(DELIMITER)));
+        TreeNode root = buildTree(queue);
+        return root;  
     }
     
-    
-    public TreeNode buildTreeFromString(Queue<String> queue) {
-        
-        String currElem = queue.poll();
-        if (!NULL_NODE.equals(currElem)) {
-            TreeNode newNode = new TreeNode(Integer.parseInt(currElem));
-            newNode.left = buildTreeFromString(queue);
-            newNode.right = buildTreeFromString(queue);
+    private TreeNode buildTree(Queue<String> queue) {
+        String val = queue.poll();
+        if (!val.equals(NULL_NODE)) {
+            TreeNode newNode = new TreeNode(Integer.parseInt(val));
+            newNode.left = buildTree(queue);
+            newNode.right = buildTree(queue);
             return newNode;
         }
         else {
