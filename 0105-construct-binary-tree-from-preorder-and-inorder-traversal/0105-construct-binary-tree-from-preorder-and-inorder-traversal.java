@@ -14,33 +14,35 @@
  * }
  */
 class Solution {
+    
+    HashMap<Integer, Integer> nodeInorderIdx = new HashMap<>();
+    
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return construct(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+        IntStream.range(0, inorder.length).forEach(idx -> nodeInorderIdx.put(inorder[idx], idx));
+                System.out.println(nodeInorderIdx);
+        return constructTree(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
     }
     
-    public TreeNode construct(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
+    public TreeNode constructTree(int[] preorder, int[] inorder,
+                                  int prestart, int preend, int instart, int inend) {
         
-        if (preStart > preEnd || inStart > inEnd) {
+        if (prestart > preend || instart > inend) {
             return null;
         }
         
-        TreeNode node = new TreeNode(preorder[preStart]);
+        int val = preorder[prestart];
         
-        int nodeInInorderIdx = 0;
+        TreeNode node = new TreeNode(val);
         
-        for (int i = inStart; i <= inEnd; i++){
-            if (inorder[i] == node.val) {
-                nodeInInorderIdx = i;
-                break;
-            }
-        }
+        int inorderIdx = nodeInorderIdx.get(val);
         
-        int leftSideLen = nodeInInorderIdx - inStart;
-        
-        node.left = construct(preorder, preStart+1, leftSideLen + preStart, inorder, inStart, nodeInInorderIdx-1);
-        
-        node.right = construct(preorder, leftSideLen + preStart + 1, preEnd, inorder, nodeInInorderIdx + 1, inEnd);
+        int leftNodesCount = inorderIdx - instart;
 
+        node.left = constructTree(preorder, inorder, prestart+1, prestart+leftNodesCount, instart, inorderIdx - 1);
+        node.right = constructTree(preorder, inorder, prestart+leftNodesCount+1, preend, inorderIdx+1, inend);
         return node;
+            
     }
+    
+
 }
