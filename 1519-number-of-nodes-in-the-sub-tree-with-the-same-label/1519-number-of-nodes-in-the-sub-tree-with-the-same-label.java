@@ -23,7 +23,7 @@ class Solution {
         }
         else {
             visited.add(node);
-            for (int child:graph.get(node)) {
+            for (int child:graph.getOrDefault(node, new ArrayList<>())) {
                 
                 int[] childCounts = findCounts(child, visited, graph, labels, result);
                 int childRes = 0;
