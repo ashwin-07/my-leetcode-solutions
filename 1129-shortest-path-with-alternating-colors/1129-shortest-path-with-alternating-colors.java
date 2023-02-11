@@ -59,8 +59,6 @@ class Solution {
                 boolean isVisited = nodeColour == 1? blueVisited.contains(neighbour.nodeVal) : redVisited.contains(neighbour.nodeVal);
                 int newDistance = 1 + currNode.distance;
                 
-
-                
                 if ((nodeColour != currNode.nodeColour) && !isVisited) {
                     
                     neighbour.setDistance(newDistance);
@@ -84,16 +82,5 @@ class Solution {
         }
         
         return distances;
-
     }
 }
-
-
-/*
-
-5
-[[2,2],[0,1],[0,3],[0,0],[0,4],[2,1],[2,0],[1,4],[3,4]]
-[[1,3],[0,0],[0,3],[4,2],[1,0]]
-
-*/
-
