@@ -7,28 +7,26 @@ class Solution {
     } 
     
     public int compress(char[] chars) {
-        
         int currConseqCount = 1;
         char prevChar = chars[0];
-        int idx = 0;
+        int compressedCharIdx = 0;
         
-        for (int i = 1; i < chars.length + 1; i++) {
-            if (i < chars.length && prevChar == chars[i]) {
+        for (int currCharIdx = 1; currCharIdx < chars.length + 1; currCharIdx++) {
+            if (currCharIdx < chars.length && prevChar == chars[currCharIdx]) {
                 currConseqCount++;
             } 
             else {
-               chars[idx++] = prevChar;
+               chars[compressedCharIdx++] = prevChar;
                if (currConseqCount > 1) {
                    char[] digits = Integer.toString(currConseqCount).toCharArray();
-                   copyArray(digits, chars, idx);
-                   idx+=digits.length;
+                   copyArray(digits, chars, compressedCharIdx);
+                   compressedCharIdx+=digits.length;
                }
                currConseqCount = 1; 
             }
-            prevChar = i < chars.length ? chars[i]: ' ';
-        }
-        
-        return idx;   
+            prevChar = currCharIdx < chars.length ? chars[currCharIdx]: ' ';
+        }    
+        return compressedCharIdx;   
     } 
 
 }
