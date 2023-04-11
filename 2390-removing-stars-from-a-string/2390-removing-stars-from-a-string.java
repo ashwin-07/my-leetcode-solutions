@@ -4,11 +4,11 @@ class Solution {
         Stack<Character> stack = new Stack<>();
         StringBuilder result = new StringBuilder();
         
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '*') {
+        for (char ch:s.toCharArray()) {
+            if (ch == '*') {
                 stack.pop();
             } else {
-                stack.push(s.charAt(i));
+                stack.push(ch);
             }
         }
         
