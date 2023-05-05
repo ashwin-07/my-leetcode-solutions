@@ -1,11 +1,16 @@
 class Solution {
     
-    final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u');
+    // final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u');
+    
+    private boolean isVowel(char c){
+        if((c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')) return true;
+        return false;
+    }
     
     public int maxVowels(String s, int k) {
         int totalVowelsCount = 0;
         for(int i =0; i< k; i++) {
-            if(VOWELS.contains(s.charAt(i))) {
+            if(isVowel(s.charAt(i))) {
                 totalVowelsCount++;
             } 
         }
@@ -13,10 +18,10 @@ class Solution {
         int maxCount = totalVowelsCount;
         
         for(int i = k; i < s.length(); i++) {
-            if(VOWELS.contains(s.charAt(i))) {
+            if(isVowel(s.charAt(i))) {
                 totalVowelsCount++;
             }
-            if(VOWELS.contains(s.charAt(i-k))) {
+            if(isVowel(s.charAt(i-k))) {
                 totalVowelsCount--;
             }
             maxCount = Math.max(maxCount, totalVowelsCount);
