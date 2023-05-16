@@ -33,30 +33,6 @@ class Solution {
         else {
             node.next = nextNode;
             return node;
-        }
-        
-        
+        }   
     }
-    
-    
-//     public ListNode swapPairs(ListNode head) {
-        
-//         if (head == null || head.next == null) { 
-//             return head;
-//         }
-        
-//         ListNode fptr = head.next;
-//         ListNode sptr = head;
-//         head = fptr;
-        
-//         while (fptr != null) {
-//             ListNode temp = fptr;
-//             fptr.next = sptr;
-//             fptr = temp.next;
-//             if (fptr != null && fptr.next != null)
-                
-//             }   
-        
-        
-//     }
 }
