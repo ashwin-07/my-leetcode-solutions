@@ -1,7 +1,7 @@
 class Solution {
     public boolean increasingTriplet(int[] nums) {
         
-        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE, min3 = Integer.MAX_VALUE;
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
         
         if (nums.length < 3){
             return false;
@@ -15,8 +15,7 @@ class Solution {
             else if (nums[i] <= min2 && nums[i] > min1) {
                 min2 = nums[i];
             }
-            else if (nums[i] <= min3 && nums[i] > min2) {
-                min3 = nums[i];
+            else {
                 return true;
             }
         }
