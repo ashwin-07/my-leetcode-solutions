@@ -7,10 +7,7 @@ class ParkingSystem {
     }
     
     public boolean addCar(int carType) {
-        if (--parkingCapacity[carType - 1] >= 0) {
-            return true;
-        }
-        return false;
+        return --parkingCapacity[carType - 1] >= 0;
     }
 }
 
