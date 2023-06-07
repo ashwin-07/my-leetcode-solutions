@@ -15,7 +15,7 @@ class Solution {
                 }
                 leftIdx++;
             }
-            if (zerosCount <= k) {
+            else if (zerosCount <= k) {
                 maxConseq = Math.max(maxConseq, rightIdx - leftIdx +1 );
             }
         }
