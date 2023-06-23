@@ -1,4 +1,5 @@
 class Solution {
+    //solved as part of Daily challenge 23rd June
     public int longestArithSeqLength(int[] nums) {
         
         int maxSeqLen = 0;
