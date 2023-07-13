@@ -3,7 +3,6 @@ class Solution {
         
         List<Integer>[] graph = new ArrayList[numCourses];
         int[] inDegree = new int[numCourses];
-        // boolean[] hasOccured
         
         if (prerequisites.length == 0) {
             return true;
@@ -19,7 +18,6 @@ class Solution {
             inDegree[dependent]++;
         }
         
-    
         Queue<Integer> queue = new LinkedList<>();
         
         for (int i = 0; i < inDegree.length; i++) {
@@ -38,8 +36,6 @@ class Solution {
             }
         }
 
-        return count == numCourses;
-        
-        
+        return count == numCourses; 
     }
 }
