@@ -15,9 +15,6 @@ class Solution {
             
         }
         
-        return intervals.length - nonOverlapCount;
-        
-        
-        
+        return intervals.length - nonOverlapCount; 
     }
 }
