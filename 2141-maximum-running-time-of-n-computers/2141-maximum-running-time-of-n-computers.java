@@ -1,9 +1,14 @@
 class Solution {
     public long maxRunTime(int n, int[] batteries) {
         
-        long totalPower = Arrays.stream(batteries)
-                                .mapToLong(num -> Long.valueOf(num))
-                                .sum();
+        // long totalPower = Arrays.stream(batteries)
+        //                         .mapToLong(num -> Long.valueOf(num))
+        //                         .sum();
+        long totalPower = 0;
+        for (int power:batteries) {
+            totalPower+=power;
+        }
+        
         long left = 1, right = totalPower / n;
         
         while (left < right) {
