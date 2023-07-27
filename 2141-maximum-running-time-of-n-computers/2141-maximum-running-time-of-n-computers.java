@@ -3,9 +3,9 @@ class Solution {
         
         // long totalPower = Arrays.stream(batteries)
         //                         .mapToLong(num -> Long.valueOf(num))
-        //                         .sum();
+        //                         .sum(); 
         long totalPower = 0;
-        for (int power:batteries) {
+        for (int power:batteries) { //faster
             totalPower+=power;
         }
         
