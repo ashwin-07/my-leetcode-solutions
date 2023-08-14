@@ -6,9 +6,7 @@ class Solution {
         
         int paths[][] = new int[rows][columns];
         
-        // if (obstacleGrid[0][0] == 0 )
-        // paths[0][0] = 1;
-        
+
         for (int i = 0; i < rows; i++) {
             
             if (obstacleGrid[i][0] == 1) {
