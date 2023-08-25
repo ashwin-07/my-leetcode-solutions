@@ -26,8 +26,7 @@ class Solution {
             count[maxChar - 'a']--;
         }
         
-        for (int i = 0; i < count.length; i++){
-            
+        for (int i = 0; i < count.length; i++){           
             while (count[i] > 0) {
                 if (idx >= res.length) {
                     idx = 1;
@@ -38,11 +37,6 @@ class Solution {
             }
             
         }
-        
-        
-        
         return String.valueOf(res);
-        
-        
     }
 }
